@@ -78,14 +78,60 @@ function RegisterPage() {
   );
 }
 
+function HomePage() {
+  return (
+    <div className="min-vh-100 bg-light">
+      <nav className="navbar navbar-light bg-white shadow-sm">
+        <div className="container py-3">
+          <Link className="navbar-brand fw-bold text-primary" to="/">Paikari</Link>
+          <div className="d-flex gap-2">
+            <Link className="btn btn-outline-primary" to="/login">Login</Link>
+            <Link className="btn btn-primary" to="/register">Create account</Link>
+          </div>
+        </div>
+      </nav>
+
+      <main className="container py-5">
+        <div className="row align-items-center g-4">
+          <div className="col-lg-7">
+            <span className="badge bg-primary-subtle text-primary mb-3">Community price intelligence</span>
+            <h1 className="display-4 fw-bold mb-3">Know what things cost before you buy.</h1>
+            <p className="lead text-muted mb-4">
+              Compare prices across local markets, share updates, and make smarter purchasing decisions in Bangladesh.
+            </p>
+            <div className="d-flex flex-wrap gap-3">
+              <Link className="btn btn-primary btn-lg" to="/register">Get started</Link>
+              <Link className="btn btn-outline-secondary btn-lg" to="/login">See login</Link>
+            </div>
+          </div>
+
+          <div className="col-lg-5">
+            <div className="card shadow-sm border-0">
+              <div className="card-body p-4">
+                <h5 className="card-title fw-bold">Why Paikari?</h5>
+                <ul className="list-group list-group-flush mt-3">
+                  <li className="list-group-item px-0">Live price insights from your community</li>
+                  <li className="list-group-item px-0">Simple comparison for everyday essentials</li>
+                  <li className="list-group-item px-0">Smarter buying decisions without the guesswork</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
 export default function App() {
   const location = useLocation();
 
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="*" element={<Navigate to="/login" replace state={{ from: location }} />} />
+      <Route path="*" element={<Navigate to="/" replace state={{ from: location }} />} />
     </Routes>
   );
 }
