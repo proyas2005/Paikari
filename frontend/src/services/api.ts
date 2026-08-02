@@ -1,11 +1,22 @@
-const API_BASE_URL = '/api';
+import axios from "axios";
 
-export async function apiRequest<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`, options);
+const api = axios.create({
+    baseURL: "http://127.0.0.1:8000/api",
 
-  if (!response.ok) {
-    throw new Error(`API request failed: ${response.status}`);
-  }
+    headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+    },
+});
 
-  return response.json() as Promise<T>;
-}
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+});
+
+export default api;
