@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthLayout from '../components/AuthLayout';
+import { signInWithGoogle } from '../lib/auth';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -26,6 +27,8 @@ export default function LoginPage() {
         </div>
         <button className="btn btn-primary w-100">Log in</button>
       </form>
+      <div className="position-relative text-center my-3"><hr /><span className="bg-white px-2 position-relative" style={{ top: '-28px' }}>or</span></div>
+      <button type="button" className="btn btn-outline-dark w-100" onClick={signInWithGoogle}>Continue with Google</button>
       <p className="text-center mt-4 mb-0">New to Paikari? <Link to="/register">Create an account</Link></p>
     </AuthLayout>
   );
