@@ -170,6 +170,19 @@ body {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
+/* inline badge logo: wider and aligns with nav text */
+.brand-mark-inline {
+  height: 44px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* when the SVG contains its own wordmark, hide the separate .brand-name text if present */
+.brand-name {
+  display: none;
+}
+
 .brand-name {
   color: var(--text);
   font-weight: 700;
