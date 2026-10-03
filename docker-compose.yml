@@ -1,7 +1,6 @@
 services:
   db:
     image: mysql:8.0
-    container_name: paikari-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: paikari
@@ -12,9 +11,6 @@ services:
       - "3307:3306"
     volumes:
       - paikari-db-data:/var/lib/mysql
-
-
-
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_secret"]
       interval: 10s
@@ -22,22 +18,15 @@ services:
       retries: 30
       start_period: 180s
 
-
-
-
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: paikari-backend
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
       - ./backend:/var/www/html
-      - backend-vendor:/var/www/html/vendor
       - backend-storage:/var/www/html/storage
-    
-    
     environment:
       APP_KEY: base64:y8TRK0r+5L0jAu3o+cWPe4Iq8XMPvSqActsPJkqVyRI=
       APP_ENV: local
@@ -59,15 +48,13 @@ services:
       db:
         condition: service_healthy
     command: >
-      sh -c "php artisan key:generate --force || true &&
-             php artisan migrate --force &&
+      sh -c "php artisan migrate --force &&
              php artisan serve --host=0.0.0.0 --port=8000"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: paikari-frontend
     restart: unless-stopped
     working_dir: /app
     volumes:
@@ -82,6 +69,5 @@ services:
 
 volumes:
   paikari-db-data:
-  backend-vendor:
   backend-storage:
   frontend-node-modules:
