@@ -3,3 +3,32 @@ dist/
 .vite/
 .env
 /backend/public/app/
+
+
+
+# --- Docker / local env files ---
+.env.docker
+.env.local
+.env.*.local
+backend/.env
+backend/.env.docker
+backend/.env.local
+frontend/.env
+frontend/.env.docker
+frontend/.env.local
+
+# --- Backend dependencies & runtime ---
+backend/vendor/
+backend/storage/*.key
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*.php
+
+# --- Local SQLite fallback (in case Laravel creates one) ---
+backend/database/database.sqlite
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db

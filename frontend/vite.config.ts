@@ -12,12 +12,12 @@ export default defineConfig({
   },
 
   server: {
+    port: 5173,
     host: '0.0.0.0',
-    port: 3000,
-
     proxy: {
-      '/auth': 'http://localhost:8000',
-      '/email': 'http://localhost:8000'
+      '/auth': 'http://backend:8000',
+      '/email': 'http://backend:8000',
+      '/api': 'http://backend:8000'
     }
   }
 });

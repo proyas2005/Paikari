@@ -1,0 +1,87 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: paikari-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: paikari
+      MYSQL_USER: paikari
+      MYSQL_PASSWORD: paikari_secret
+      MYSQL_ROOT_PASSWORD: root_secret
+    ports:
+      - "3307:3306"
+    volumes:
+      - paikari-db-data:/var/lib/mysql
+
+
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_secret"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 180s
+
+
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: paikari-backend
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./backend:/var/www/html
+      - backend-vendor:/var/www/html/vendor
+      - backend-storage:/var/www/html/storage
+    
+    
+    environment:
+      APP_KEY: base64:y8TRK0r+5L0jAu3o+cWPe4Iq8XMPvSqActsPJkqVyRI=
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      FRONTEND_URL: http://localhost:5173
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_DATABASE: paikari
+      DB_USERNAME: paikari
+      DB_PASSWORD: paikari_secret
+      SESSION_DRIVER: database
+      CACHE_STORE: database
+      QUEUE_CONNECTION: database
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "php artisan key:generate --force || true &&
+             php artisan migrate --force &&
+             php artisan serve --host=0.0.0.0 --port=8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: paikari-frontend
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - frontend-node-modules:/app/node_modules
+    environment:
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  paikari-db-data:
+  backend-vendor:
+  backend-storage:
+  frontend-node-modules:
