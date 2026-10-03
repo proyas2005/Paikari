@@ -1,6 +1,18 @@
 Paikari
 community powered price intelligency network
 
+## Run with Docker
+
+Start Docker Desktop with its WSL 2 engine enabled, then run these commands from the repository root:
+
+```sh
+docker compose up --build
+```
+
+Open the website at <http://localhost:5173>. The Laravel backend is at <http://localhost:8000>, and MySQL is exposed on port `3307`. Stop the services with `Ctrl+C`; run `docker compose down` to stop and remove the containers while keeping the database volume.
+
+To remove the database and its stored data too, run `docker compose down --volumes`.
+
 🛒 Paikari. Community Price Intelligence Network
 
 Paikari is a web platform that helps buyers and sellers in Bangladesh know the prices of products. It lets users find, compare and check prices before buying.
