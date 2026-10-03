@@ -274,7 +274,7 @@ body {
 }
 
 .logo-card {
-  min-height: 70px;
+  min-height: 90px;
   border-radius: 1.25rem;
   background: #f8fafc;
   border: 1px solid rgba(148, 163, 184, 0.3);
@@ -288,7 +288,7 @@ body {
 
 .logo-card-logo img {
   width: 100%;
-  max-width: 140px;
+  max-width: 200px;
   height: auto;
   object-fit: contain;
 }

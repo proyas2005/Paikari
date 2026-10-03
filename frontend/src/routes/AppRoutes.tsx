@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import EmailVerifiedPage from '../pages/EmailVerifiedPage';
 import SubmitPricePage from '../pages/SubmitPricePage';
+import ContactPage from '../pages/ContactPage';
 
 export default function AppRoutes() {
   const location = useLocation();
@@ -19,6 +20,7 @@ export default function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/email-verified" element={<EmailVerifiedPage />} />
       <Route path="/submit-price" element={<SubmitPricePage />} />
+      <Route path="/contact" element={<ContactPage />} />
       <Route path="*" element={<Navigate to="/" replace state={{ from: location }} />} />
       
     </Routes>

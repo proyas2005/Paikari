@@ -23,7 +23,7 @@ export default function HomePage() {
           </div>
           <div className="logo-grid">
             {['agora', 'meena-bazar', 'unimart', 'swapno'].map((store) => (
-              <div className="logo-card logo-card-logo" key={store}><img src={`/logos/${store}.svg`} alt={`${store} logo`} /></div>
+              <div className="logo-card logo-card-logo" key={store}><img src={`/app/logos/${store}.svg`} alt={`${store} logo`} /></div>
             ))}
           </div>
         </aside>
