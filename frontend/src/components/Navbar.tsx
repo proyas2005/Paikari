@@ -1,20 +1,56 @@
-import { Link } from 'react-router-dom';
+ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <nav className="top-nav">
       <div className="container nav-content">
+
+        {/* Paikari Logo */}
         <div className="nav-left">
-          <img src="/logos/paikari.svg" alt="Paikari logo" className="brand-mark-inline" />
+          <Link to="/" className="paikari-logo">
+            <img
+              src={`${import.meta.env.BASE_URL}paikari-logo.png`}
+              alt="Paikari"
+            />
+          </Link>
         </div>
+
+        {/* Navigation Links */}
         <div className="nav-links">
-          <Link className="nav-link-custom" to="/dashboard">Dashboard</Link>
-          <Link className="nav-link-custom" to="/compare">Compare</Link>
-          <Link className="nav-link-custom" to="/login">Sign in</Link>
+
+          <Link
+            to="/dashboard"
+            className="nav-link-custom"
+          >
+            Dashboard
+          </Link>
+
+          <Link
+            to="/compare"
+            className="nav-link-custom"
+          >
+            Compare
+          </Link>
+
+          <Link
+            to="/login"
+            className="nav-link-custom"
+          >
+            Sign in
+          </Link>
+
         </div>
+
+        {/* Get Started Button */}
         <div className="nav-actions">
-          <Link className="btn btn-accent" to="/register">Get Started</Link>
+          <Link
+            to="/register"
+            className="btn btn-accent"
+          >
+            Get Started
+          </Link>
         </div>
+
       </div>
     </nav>
   );
