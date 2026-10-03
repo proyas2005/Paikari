@@ -14,9 +14,7 @@ export default function HomePage() {
             <Link className="btn btn-accent btn-lg" to="/register">Start free trial</Link>
             <Link className="btn btn-secondary-outline btn-lg" to="/login">Watch demo</Link>
           </div>
-          <div className="category-chips">
-            <span>swapno</span><span>local markets</span><span>electronics</span><span>clothings</span><span>sportswear</span><span>others</span>
-          </div>
+          <div className="category-chips">{['Swapno', 'Local markets', 'Electronics', 'Clothings', 'Sportswear', 'Others'].map((label) => (<span className="category-chip" key={label}>{label}</span>))}</div>
         </div>
         <aside className="hero-logo-panel">
           <div className="logo-panel-copy">

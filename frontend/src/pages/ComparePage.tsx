@@ -59,7 +59,7 @@ export default function ComparePage() {
           </p>
         </div>
 
-        <Link className="btn btn-secondary-outline" to="/dashboard">
+        <Link className="btn btn-accent" to="/dashboard">
           Submit a price
         </Link>
       </div>

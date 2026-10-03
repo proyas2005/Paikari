@@ -1,1 +1,18 @@
 @import '../index.css';
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--primary, #4f46e5);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  transition: all 0.15s ease;
+  cursor: default;
+}
+.category-chip:hover {
+  background: rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
+}

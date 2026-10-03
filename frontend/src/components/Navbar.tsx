@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="top-nav">
       <div className="container nav-content">
         <div className="nav-left">
-          <img src="/logos/paikari.svg" alt="Paikari logo" className="brand-mark-inline" />
+          <img src="/app/logos/paikari.svg" alt="Paikari logo" className="brand-mark-inline" />
         </div>
         <div className="nav-links">
           <Link className="nav-link-custom" to="/dashboard">Dashboard</Link>
