@@ -1,6 +1,5 @@
  import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
 
 const stores = [
   { name: 'Agora', className: 'agora-logo' },
@@ -12,8 +11,6 @@ const stores = [
 export default function HomePage() {
   return (
     <div className="home-shell">
-      <Navbar />
-
       <main className="hero-banner">
         <div className="hero-text-panel hero-text-left">
           <h1 className="hero-title">
