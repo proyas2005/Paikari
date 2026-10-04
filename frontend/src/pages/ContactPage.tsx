@@ -10,7 +10,9 @@ export default function ContactPage() {
         <div className="page-header">
           <div>
             <h1 className="page-title">Contact us</h1>
-            <p className="page-subtitle">Questions, feedback, or partnership ideas? We would love to hear from you.</p>
+            <p className="page-subtitle">
+              Questions, feedback, or partnership ideas? We would love to hear from you.
+            </p>
           </div>
           <Link className="btn btn-accent" to="/register">Get started</Link>
         </div>
