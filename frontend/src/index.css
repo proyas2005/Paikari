@@ -158,6 +158,20 @@ body {
   gap: 0.85rem;
 }
 
+.paikari-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.paikari-logo img {
+  display: block;
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
 .brand-mark {
   width: 44px;
   height: 44px;
@@ -274,7 +288,7 @@ body {
 }
 
 .logo-card {
-  min-height: 90px;
+  min-height: 70px;
   border-radius: 1.25rem;
   background: #f8fafc;
   border: 1px solid rgba(148, 163, 184, 0.3);
@@ -288,7 +302,7 @@ body {
 
 .logo-card-logo img {
   width: 100%;
-  max-width: 200px;
+  max-width: 140px;
   height: auto;
   object-fit: contain;
 }
@@ -690,22 +704,44 @@ body {
   margin: 0;
 }
 
+/* Paikari Logo */
+.paikari-logo {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #3157d5;
+}
 
-.category-chip {
-  display: inline-flex;
+/* Store Logo Cards */
+.logo-card {
+  display: flex;
   align-items: center;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--primary, #4f46e5);
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid rgba(79, 70, 229, 0.18);
-  transition: all 0.15s ease;
-  cursor: default;
-}
-.category-chip:hover {
-  background: rgba(79, 70, 229, 0.15);
-  transform: translateY(-1px);
+  justify-content: center;
+  height: 64px;
+  border: 1px solid #dce3ef;
+  border-radius: 18px;
+  background: #ffffff;
 }
 
+.store-logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.agora-logo {
+  color: #e30613;
+}
+
+.meena-logo {
+  color: #d62828;
+}
+
+.unimart-logo {
+  color: #1769aa;
+}
+
+.swapno-logo {
+  color: #e91e63;
+}
