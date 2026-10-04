@@ -22,6 +22,7 @@ type Price = {
 
 export default function ComparePage() {
   const [prices, setPrices] = useState<Price[]>([]);
+  const [productSearch, setProductSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +39,12 @@ export default function ComparePage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const grouped = prices.reduce<Record<string, Price[]>>((groups, price) => {
+  const normalizedSearch = productSearch.trim().toLowerCase();
+  const filteredPrices = prices.filter((price) =>
+    price.product.name.toLowerCase().includes(normalizedSearch),
+  );
+
+  const grouped = filteredPrices.reduce<Record<string, Price[]>>((groups, price) => {
     const key = price.product.name;
 
     if (!groups[key]) {
@@ -64,6 +70,20 @@ export default function ComparePage() {
         </Link>
       </div>
 
+      <div className="mb-4">
+        <label className="form-label" htmlFor="product-search">
+          Search products
+        </label>
+        <input
+          id="product-search"
+          className="form-control"
+          type="search"
+          value={productSearch}
+          onChange={(event) => setProductSearch(event.target.value)}
+          placeholder="Search by product name"
+        />
+      </div>
+
       {loading && (
         <div className="table-panel">
           <div className="p-3">Loading price comparisons...</div>
@@ -85,7 +105,13 @@ export default function ComparePage() {
         </div>
       )}
 
-      {!loading && !error && prices.length > 0 && (
+      {!loading && !error && prices.length > 0 && filteredPrices.length === 0 && (
+        <div className="table-panel" role="status">
+          <div className="p-3">No products match “{productSearch}”.</div>
+        </div>
+      )}
+
+      {!loading && !error && filteredPrices.length > 0 && (
         <div className="compare-grid">
           {Object.entries(grouped).map(([productName, productPrices]) => (
             <div className="compare-card" key={productName}>
